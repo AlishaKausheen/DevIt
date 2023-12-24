@@ -1,9 +1,14 @@
 import React from 'react'
+import { Route, Routes } from "react-router-dom"
+import {Home}  from './container';
 
 const App = () => {
   return(
-    <div className="h-screen w-screen bg-red-400 font-extrabold text-cyan-500 flex items-center justify-center text-10xl">
-      App hai</div>
+    <div className="h-screen w-screen flex items-start justify-start overflow-hidden">
+      <Routes>
+        <Route path='/home/*' element={<Home/>} />
+      </Routes>
+    </div>
   );
 }
 export default App;
