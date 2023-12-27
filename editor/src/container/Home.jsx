@@ -5,6 +5,8 @@ import { FaSearchengin } from "react-icons/fa6"
 import {motion} from "framer-motion"
 import { Link, Route, Routes } from 'react-router-dom'
 import {Logo} from "../assets"
+import {Projects} from '../container'
+import { SignUp } from '../container'
 
 const Home = ()=> {
   const [isSideMenu, setIsSideMenu] = useState(false);
