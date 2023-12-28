@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Logo } from '../assets';
 import { UserAuthinput } from '../components';
 import { FaEnvelope } from 'react-icons/fa6';
+import {MdPassword} from 'react-icons/md'
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
