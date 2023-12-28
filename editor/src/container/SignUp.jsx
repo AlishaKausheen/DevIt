@@ -23,12 +23,12 @@ const SignUp = () => {
             Icon={FaEnvelope} />
           
           {/*password */}
-          <UserAuthinput label=''
-            placeHolder=""
-            isPass=""
-            key=""
-            setStateFunction=""
-            Icon="" />
+          <UserAuthinput label="Password"
+            placeHolder="Password"
+            isPass={true}
+            key="Password"
+            setStateFunction={setPassword}
+            Icon={MdPassword} />
           
           {/*alert section */}
 
