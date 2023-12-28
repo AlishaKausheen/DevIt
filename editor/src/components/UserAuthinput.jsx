@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import {FaEnvelope} from "react-icons/fa6"
+import {FaEnvelope , FaEye} from "react-icons/fa6"
 
-const UserAuthinput = () => {
+const UserAuthinput = (label , placeHolder , isPass , setStateFunction , Icon) => {
     const [value, setValue] = useState("");
   return (
     <div className='flex flex-col items-start justify-start gap-1'>
@@ -13,7 +13,10 @@ const UserAuthinput = () => {
                   placeholder='Email here'
                   className='flex-1 w-full h-full py-6 outline-none border-none bg-transparent text-gray-600 text-lg'
                   value={value}
-              onChange={(e)=>setValue(e.target.value)}/>
+                  onChange={(e) => setValue(e.target.value)} />
+              <div className='cursor-pointer'>
+                  <FaEye className='text-gray-600 text-2xl'/>
+              </div>
           </div>
     </div>
   )
