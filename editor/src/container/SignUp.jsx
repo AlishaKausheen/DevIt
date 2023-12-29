@@ -6,7 +6,8 @@ import {MdPassword} from 'react-icons/md'
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
-   const [password , setPassword] = useState("")
+  const [password, setPassword] = useState("");
+  const [getEmailValidationStatus, setGetEmailValidationStatus] = useState(false);
   return (
       <div className='w-full py-6'>
           <img src={Logo} className='object-contain w-12 opacity-50 h-auto' alt="Logo" />
@@ -21,7 +22,8 @@ const SignUp = () => {
             isPass={false}
             key="Email"
             setStateFunction={setEmail}
-            Icon={FaEnvelope} />
+            Icon={FaEnvelope}
+            setGetEmailValidationStatus={setGetEmailValidationStatus} />
           
           {/*password */}
           <UserAuthinput label="Password"
