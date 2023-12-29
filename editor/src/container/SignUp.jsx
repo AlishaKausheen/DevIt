@@ -9,6 +9,7 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [getEmailValidationStatus, setGetEmailValidationStatus] = useState(false);
+  const [isLogin, setisLogin] = useState(false);
   return (
       <div className='w-full py-6'>
           <img src={Logo} className='object-contain w-12 opacity-50 h-auto' alt="Logo" />
@@ -37,10 +38,16 @@ const SignUp = () => {
           {/*alert section */}
 
           {/*login button */}
-          <motion.div whileTap={{scale: .9}} className='flex items-center justify-center w-full
+          {!isLogin ? (
+            <motion.div whileTap={{scale: .9}} className='flex items-center justify-center w-full
           py-3 rounded-xl hover:bg-emerald-400 cursor-pointer bg-emerald-500'>
            <p className='text-xl text-white'>Sign Up</p>
-          </motion.div>
+            </motion.div>)
+            : (<motion.div whileTap={{scale: .9}} className='flex items-center justify-center w-full
+          py-3 rounded-xl hover:bg-emerald-400 cursor-pointer bg-emerald-500'>
+           <p className='text-xl text-white'>Login</p>
+          </motion.div>)
+          }
           <p className='text-sm text-gray-400 flex items-center justify-center
           gap-3'>Already Have an account !
             <span className='text-emerald-500 cursor-pointer'>Login Here</span></p>
