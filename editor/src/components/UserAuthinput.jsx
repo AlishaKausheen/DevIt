@@ -5,6 +5,16 @@ import { motion } from "framer-motion";
 const UserAuthinput = ({ label, placeHolder, isPass, setStateFunction, Icon }) => {
   const [value, setValue] = useState("");
   const [showPass, setShowPass] = useState(false);
+  const [isEmailValid, setIsEmailValid] = useState(false);
+  const handleTextChange = (e) => {
+    setValue(e.target.value);
+    setStateFunction(e.target.value);
+    if (placeHolder === "Email") {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const status = emailRegex.test(value);
+      setIsEmailValid(status);
+    }
+  }
   return (
     <div className='flex flex-col items-start justify-start gap-1'>
           <label className='text-sm text-gray-300'>{label}</label>
@@ -15,7 +25,7 @@ const UserAuthinput = ({ label, placeHolder, isPass, setStateFunction, Icon }) =
                   placeholder={placeHolder}
                   className='flex-1 w-full h-full py-6 outline-none border-none bg-transparent text-gray-600 text-lg'
                   value={value}
-                  onChange={(e) => setValue(e.target.value)} />
+                  onChange={handleTextChange} />
         {isPass && (
           <motion.div onClick={()=> setShowPass(!showPass)} whileTap={{scale: .9}} className='cursor-pointer'>
             {showPass ?
