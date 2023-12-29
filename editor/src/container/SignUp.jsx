@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { Logo } from '../assets';
 import { UserAuthinput } from '../components';
 import { FaEnvelope } from 'react-icons/fa6';
-import {MdPassword} from 'react-icons/md'
+import { MdPassword } from 'react-icons/md';
+import { motion } from 'framer-motion';
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -36,6 +37,13 @@ const SignUp = () => {
           {/*alert section */}
 
           {/*login button */}
+          <motion.div whileTap={{scale: .9}} className='flex items-center justify-center w-full
+          py-3 rounded-xl hover:bg-emerald-400 cursor-pointer bg-emerald-500'>
+           <p className='text-xl text-white'>Sign Up</p>
+          </motion.div>
+          <p className='text-sm text-gray-400 flex items-center justify-center
+          gap-3'>Already Have an account !
+            <span className='text-emerald-500 cursor-pointer'>Login Here</span></p>
 
           {/*account text  section */}
 
