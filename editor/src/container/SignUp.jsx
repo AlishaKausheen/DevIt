@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Logo } from '../assets';
 import { UserAuthinput } from '../components';
-import { FaEnvelope } from 'react-icons/fa6';
+import { FaEnvelope, FaGithub } from 'react-icons/fa6';
 import { MdPassword } from 'react-icons/md';
 import { motion } from 'framer-motion';
 import { FcGoogle} from 'react-icons/fc';
@@ -87,6 +87,12 @@ const SignUp = () => {
 
 
           {/*sign in with github */}
+           <motion.div className='flex items-center justify-center gap-3
+          bg-[rgba(256,256,256,0.2)] backdrop:blur-md w-full py-3 rounded-xl
+          hover:bg-[rgba(256,256,256,0.4)] cursor-pointer' whileTap={{ scale: .9 }}>
+            <FaGithub className='text-3xl text-white' />
+            <p className='text-xl text-white '>Sign in with Github</p>
+          </motion.div>
                   
               </div>
 
