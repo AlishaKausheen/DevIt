@@ -4,6 +4,7 @@ import { UserAuthinput } from '../components';
 import { FaEnvelope } from 'react-icons/fa6';
 import { MdPassword } from 'react-icons/md';
 import { motion } from 'framer-motion';
+import { FcGoogle} from 'react-icons/fc';
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -49,6 +50,7 @@ const SignUp = () => {
           </motion.div>)
           }
           
+          {/*account text  section */}
           {!isLogin ? (
             <p className='text-sm text-gray-400 flex items-center justify-center
           gap-3'>Already Have an account !
@@ -56,17 +58,33 @@ const SignUp = () => {
           ) : 
             (
               <p className='text-sm text-gray-400 flex items-center justify-center
-          gap-3'>Doen't Have an account !
+          gap-3'>Doesn't Have an account !
             <span onClick={()=> setisLogin(!isLogin)} className='text-emerald-500 cursor-pointer'>Create Here</span></p>
             )
-}
-          {/*account text  section */}
-
+          }   
+          
           {/*or section */}
+          <div className='flex items-center justify-center gap-12'>
+            <div className='h-[1px] bg-[rgba(256,256,256,0.2)] rounded-md w-24'></div>
+            <p className='text-sm text-[rgba(256,256,256,0.2)]'>OR</p>
+            <div className='h-[1px] bg-[rgba(256,256,256,0.2)] rounded-md w-24'></div>
+          </div>
 
           {/* sign in with google */}
+          <motion.div className='flex items-center justify-center gap-3
+          bg-[rgba(256,256,256,0.2)] backdrop:blur-md w-full py-3 rounded-xl
+          hover:bg-[rgba(256,256,256,0.4)] cursor-pointer' whileTap={{ scale: .9 }}>
+            <FcGoogle className='text-3xl ' />
+            <p className='text-xl text-white '>Sign in with Google</p>
+          </motion.div>
 
           {/*or section */}
+          <div className='flex items-center justify-center gap-12'>
+            <div className='h-[1px] bg-[rgba(256,256,256,0.2)] rounded-md w-24'></div>
+            <p className='text-sm text-[rgba(256,256,256,0.2)]'>OR</p>
+            <div className='h-[1px] bg-[rgba(256,256,256,0.2)] rounded-md w-24'></div>
+          </div>
+
 
           {/*sign in with github */}
                   
