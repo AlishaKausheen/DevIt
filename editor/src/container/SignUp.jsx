@@ -48,10 +48,18 @@ const SignUp = () => {
            <p className='text-xl text-white'>Login</p>
           </motion.div>)
           }
-          <p className='text-sm text-gray-400 flex items-center justify-center
+          
+          {!isLogin ? (
+            <p className='text-sm text-gray-400 flex items-center justify-center
           gap-3'>Already Have an account !
-            <span className='text-emerald-500 cursor-pointer'>Login Here</span></p>
-
+            <span onClick={()=> setisLogin(!isLogin)} className='text-emerald-500 cursor-pointer'>Login Here</span></p>
+          ) : 
+            (
+              <p className='text-sm text-gray-400 flex items-center justify-center
+          gap-3'>Doen't Have an account !
+            <span onClick={()=> setisLogin(!isLogin)} className='text-emerald-500 cursor-pointer'>Create Here</span></p>
+            )
+}
           {/*account text  section */}
 
           {/*or section */}
