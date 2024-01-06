@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react'
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom"
-import {Home}  from './container';
+import { Home } from './container';
+import { auth } from './config/firebase.config';
+
 
 const App = () => {
   const navigate = useNavigate();
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(userCred => {
       if (userCred) {
-        console.log(userCred?.providerData[0].email);
+        console.log(userCred?.providerData[0]);
       }
       else {
         navigate("/home/auth", {replace:true})
