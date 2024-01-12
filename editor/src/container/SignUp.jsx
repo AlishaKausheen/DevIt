@@ -6,12 +6,26 @@ import { MdPassword } from 'react-icons/md';
 import { motion } from 'framer-motion';
 import { FcGoogle} from 'react-icons/fc';
 import { signInWithGoogle } from '../utils/helpers';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../config/firebase.config';
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [getEmailValidationStatus, setGetEmailValidationStatus] = useState(false);
   const [isLogin, setisLogin] = useState(false);
+
+  const createNewUser = async () => {
+    if (getEmailValidationStatus) {
+      await createUserWithEmailAndPassword(auth, email, password).then(
+        userCred => {
+          if (userCred) {
+            console.log(userCred);
+          }
+        }
+      ).catch(err => console.log(err));
+    }
+  }
   return (
       <div className='w-full py-6'>
           <img src={Logo} className='object-contain w-12 opacity-50 h-auto' alt="Logo" />
