@@ -89,7 +89,8 @@ const SignUp = () => {
 
 
           {/*sign in with github */}
-           <motion.div className='flex items-center justify-center gap-3
+          <motion.div onClick={signInWithGitHub}
+            className='flex items-center justify-center gap-3
           bg-[rgba(256,256,256,0.2)] backdrop:blur-md w-full py-3 rounded-xl
           hover:bg-[rgba(256,256,256,0.4)] cursor-pointer' whileTap={{ scale: .9 }}>
             <FaGithub className='text-3xl text-white' />
