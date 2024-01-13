@@ -66,6 +66,12 @@ const SignUp = () => {
             Icon={MdPassword} />
           
           {/*alert section */}
+          <motion.p
+            key={"AlertMessage"}
+            {...fadeInOut}
+            className='text-red-500'>
+            Some Alert
+          </motion.p>
 
           {/*login button */}
           {!isLogin ? (
