@@ -55,7 +55,9 @@ const SignUp = () => {
 
           {/*login button */}
           {!isLogin ? (
-            <motion.div whileTap={{scale: .9}} className='flex items-center justify-center w-full
+            <motion.div
+              onClick={createNewUser}
+              whileTap={{ scale: .9 }} className='flex items-center justify-center w-full
           py-3 rounded-xl hover:bg-emerald-400 cursor-pointer bg-emerald-500'>
            <p className='text-xl text-white'>Sign Up</p>
             </motion.div>)

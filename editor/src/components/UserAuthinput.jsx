@@ -33,8 +33,8 @@ const UserAuthinput = ({ label, placeHolder, isPass, setStateFunction, Icon, set
         {isPass && (
           <motion.div onClick={()=> setShowPass(!showPass)} whileTap={{scale: .9}} className='cursor-pointer'>
             {showPass ?
-                 ( <FaEye className='text-gray-600 text-2xl'/>)
-              : (<FaEyeSlash className='text-gray-600 text-2xl'/>)
+                 ( <FaEyeSlash className='text-gray-600 text-2xl'/>)
+              : (<FaEye className='text-gray-600 text-2xl'/>)
             }
           </motion.div>
               )}
