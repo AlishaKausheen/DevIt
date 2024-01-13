@@ -6,7 +6,8 @@ import { MdPassword } from 'react-icons/md';
 import { motion } from 'framer-motion';
 import { FcGoogle} from 'react-icons/fc';
 import { signInWithGoogle } from '../utils/helpers';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { signInWithGitHub } from '../utils/helpers';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../config/firebase.config';
 
 const SignUp = () => {
@@ -24,6 +25,19 @@ const SignUp = () => {
           }
         }
       ).catch(err => console.log(err));
+    }
+  };
+
+  const loginWithEmailPassword = async () => {
+    if(getEmailValidationStatus){
+      await signInWithEmailAndPassword(auth, email, password).then
+        (userCred => {
+          if (userCred) {
+            console.log(userCred)
+          }
+        }).catch(err => {
+          console.log(err.message);
+        })
     }
   }
   return (
@@ -61,7 +75,9 @@ const SignUp = () => {
           py-3 rounded-xl hover:bg-emerald-400 cursor-pointer bg-emerald-500'>
            <p className='text-xl text-white'>Sign Up</p>
             </motion.div>)
-            : (<motion.div whileTap={{scale: .9}} className='flex items-center justify-center w-full
+            : (<motion.div
+              onClick={loginWithEmailPassword}
+              whileTap={{ scale: .9 }} className='flex items-center justify-center w-full
           py-3 rounded-xl hover:bg-emerald-400 cursor-pointer bg-emerald-500'>
            <p className='text-xl text-white'>Login</p>
           </motion.div>)
