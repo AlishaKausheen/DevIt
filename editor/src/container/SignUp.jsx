@@ -3,7 +3,7 @@ import { Logo } from '../assets';
 import { UserAuthinput } from '../components';
 import { FaEnvelope, FaGithub } from 'react-icons/fa6';
 import { MdPassword } from 'react-icons/md';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { FcGoogle} from 'react-icons/fc';
 import { signInWithGoogle } from '../utils/helpers';
 import { signInWithGitHub } from '../utils/helpers';
@@ -15,6 +15,8 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [getEmailValidationStatus, setGetEmailValidationStatus] = useState(false);
   const [isLogin, setisLogin] = useState(false);
+  const [alert, setAlert] = useState(false);
+  const [AlertMsg, setAlertMsg] = useState("");
 
   const createNewUser = async () => {
     if (getEmailValidationStatus) {
@@ -37,6 +39,21 @@ const SignUp = () => {
           }
         }).catch(err => {
           console.log(err.message);
+          if (err.message.includes("user-not-found")) {
+            setAlert(true);
+            setAlertMsg("Invalid Id : User not found")
+          }
+         else  if (err.message.includes("wrong-password")) {
+            setAlert(true);
+            setAlertMsg("Password Mismatch")
+          }
+          else {
+            setAlert(true);
+            setAlertMsg("Temporary disabled due to many failed login");
+          }
+          setInterval(() => {
+            setAlert(false);
+          }, 4000);
         })
     }
   }
@@ -66,12 +83,17 @@ const SignUp = () => {
             Icon={MdPassword} />
           
           {/*alert section */}
-          <motion.p
+          <AnimatePresence>
+            {alert && (
+              <motion.p
             key={"AlertMessage"}
             {...fadeInOut}
             className='text-red-500'>
-            Some Alert
+            {AlertMsg}
           </motion.p>
+     
+           )}
+          </AnimatePresence>
 
           {/*login button */}
           {!isLogin ? (
