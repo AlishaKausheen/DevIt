@@ -22,7 +22,7 @@ const App = () => {
       else {
         navigate("/home/auth", { replace: true })
       }
-      setInterval(() => {
+     setInterval(() => {
         setIsLoading(false);
       },2000)
     })
