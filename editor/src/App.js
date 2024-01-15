@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom"
 import { Home } from './container';
-import { auth } from './config/firebase.config';
-import { setDoc } from 'firebase/firestore';
+import { auth, db } from './config/firebase.config';
+import { doc, setDoc } from 'firebase/firestore';
 import { Spinner } from './components';
 
 
