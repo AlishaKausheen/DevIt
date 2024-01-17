@@ -1,7 +1,7 @@
-import { combinReducers } from "redux"
+import { combineReducers } from "redux"
 import userAuthReducer from "./userAuthReducer"
 
-const myReducer = combinReducers({
+const myReducer = combineReducers({
     user : userAuthReducer
 })
 
