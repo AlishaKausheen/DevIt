@@ -43,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "remote-redux-devtools": "^0.5.16",
     "tailwindcss": "^3.3.6"
   }
 }
