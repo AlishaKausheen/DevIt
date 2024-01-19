@@ -4,11 +4,15 @@ import { Home } from './container';
 import { auth, db } from './config/firebase.config';
 import { doc, setDoc } from 'firebase/firestore';
 import { Spinner } from './components';
+import { useDispatch } from 'react-redux';
+import { SET_USER } from './context/actions/userActions';
 
 
 const App = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
+  const dispath = useDispatch()
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(userCred => {
       if (userCred) {
@@ -16,6 +20,8 @@ const App = () => {
         setDoc(doc(db, "users", userCred?.uid), userCred?.providerData[0]).
           then(() => {
             //dispath the action to store
+            dispath(SET_USER(userCred?.providerData[0]));
+            navigate("/home/projects", { replace: true });
 
           })
       }
