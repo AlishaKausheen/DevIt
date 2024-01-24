@@ -7,10 +7,12 @@ import { Link, Route, Routes } from 'react-router-dom'
 import {Logo} from "../assets"
 import {Projects} from '../container'
 import { SignUp } from '../container'
+import { useSelector } from 'react-redux'
+import { UserProfileDetails } from '../components'
 
 const Home = ()=> {
   const [isSideMenu, setIsSideMenu] = useState(false);
-  const [user, setUser] = useState(null);
+  const user = useSelector(state => state.user?.user)
     return(
     <>
             <div className={`w-16 ${isSideMenu ? "w-1" : "flex-[.1] xl:flex-[.2]"} 
@@ -67,7 +69,7 @@ const Home = ()=> {
             )}
 
             {user && (
-              <div></div>
+              <UserProfileDetails/>
             )}
           </div>
           {/*bottom section */}
