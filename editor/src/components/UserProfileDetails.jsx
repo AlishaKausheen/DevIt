@@ -2,7 +2,7 @@ import React from 'react';
 import {  useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 import { FaChevronDown } from 'react-icons/fa6';
-import { Menus } from '../utils/helpers';
+import { Menus, signOutAction } from '../utils/helpers';
 import {Link} from 'react-router-dom'
 
 
