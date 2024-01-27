@@ -18,8 +18,11 @@ const UserProfileDetails = () => {
           </p>
         )}
       </div>
-      <motion.div whileTap={{scale: 0.9}}>
+      <motion.div whileTap={{scale: 0.9}} className='p-4 rounded-md flex items-center justify-center bg-slate-600 cursor-pointer'>
         <FaChevronDown className=' text-gray-400'/>
+      </motion.div>
+      <motion.div className='bg-slate-600 absolute top-16 right-0 px-4 py-3 rounded-xl shadow-md z-10 flex flex-col items-start justify-start gap-4 min-w-[225px]'>
+
       </motion.div>
     </div>
   )
