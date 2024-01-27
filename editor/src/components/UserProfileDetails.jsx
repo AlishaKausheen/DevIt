@@ -2,6 +2,8 @@ import React from 'react';
 import {  useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 import { FaChevronDown } from 'react-icons/fa6';
+import { Menus } from '../utils/helpers';
+import {Link} from 'react-router-dom'
 
 
 const UserProfileDetails = () => {
@@ -18,11 +20,18 @@ const UserProfileDetails = () => {
           </p>
         )}
       </div>
-      <motion.div whileTap={{scale: 0.9}} className='p-4 rounded-md flex items-center justify-center bg-slate-600 cursor-pointer'>
+      <motion.div whileTap={{scale: 0.9}} className='p-4 rounded-md flex items-center justify-center bg-zinc-800 cursor-pointer'>
         <FaChevronDown className=' text-gray-400'/>
       </motion.div>
-      <motion.div className='bg-slate-600 absolute top-16 right-0 px-4 py-3 rounded-xl shadow-md z-10 flex flex-col items-start justify-start gap-4 min-w-[225px]'>
-
+      <motion.div className='bg-zinc-800 absolute top-16 right-0 px-4 py-3 rounded-xl shadow-md z-10 flex flex-col items-start justify-start gap-4 min-w-[225px]'>
+        {Menus && Menus.map(menu => (
+          <Link to={menu.uri} key={menu.id} className='text-gray-300 text-lg hover:bg-[rgba(256,256,256,0.05)] px-2 py-1 w-full rounded-md'>
+            {menu.name}
+       </Link>
+        ))}
+        <motion.p onClick={signOutAction} whileTap={{scale: 0.9}} className='text-gray-300 text-lg hover:bg-[rgba(256,256,256,0.05)] px-2 py-1 w-full rounded-md cursor-pointer'>
+         Sign Out
+        </motion.p>
       </motion.div>
     </div>
   )

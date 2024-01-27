@@ -19,7 +19,7 @@ export const signInWithGitHub = async () => {
 };
 
 export const Menus = [
-    { id: uuidv4(), name: "Projects", url: "/home/projects" },
-    { id: uuidv4(), name: "Collections", url: "/home/collection" },
-    { id: uuidv4(), name: "Profile", url: "/home/profile" },
+    { id: uuidv4(), name: "Projects", uri: "/home/projects" },
+    { id: uuidv4(), name: "Collections", uri: "/home/collection" },
+    { id: uuidv4(), name: "Profile", uri: "/home/profile" },
 ];
