@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {  useSelector } from 'react-redux';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { FaChevronDown } from 'react-icons/fa6';
 import { Menus, signOutAction } from '../utils/helpers';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { slideUpOutOut } from "../animations"
 
 
 const UserProfileDetails = () => {
   const user = useSelector(state => state.user?.user);
+  const [isMenu, setIsMenu] = useState(false);
   return (
     <div className='flex items-center justify-center gap-4 relative'>
       <div className='w-14 h-14 flex items-center justify-center rounded-xl overflow-hidden cursor-pointer bg-emerald-500'>
@@ -20,10 +22,13 @@ const UserProfileDetails = () => {
           </p>
         )}
       </div>
-      <motion.div whileTap={{scale: 0.9}} className='p-4 rounded-md flex items-center justify-center bg-zinc-800 cursor-pointer'>
+      <motion.div onClick={()=> setIsMenu(!isMenu)} whileTap={{scale: 0.9}} className='p-4 rounded-md flex items-center justify-center bg-zinc-800 cursor-pointer'>
         <FaChevronDown className=' text-gray-400'/>
       </motion.div>
-      <motion.div className='bg-zinc-800 absolute top-16 right-0 px-4 py-3 rounded-xl shadow-md z-10 flex flex-col items-start justify-start gap-4 min-w-[225px]'>
+      <AnimatePresence>
+        {isMenu && (
+          
+      <motion.div {...slideUpOutOut} className='bg-zinc-800 absolute top-16 right-0 px-4 py-3 rounded-xl shadow-md z-10 flex flex-col items-start justify-start gap-4 min-w-[225px]'>
         {Menus && Menus.map(menu => (
           <Link to={menu.uri} key={menu.id} className='text-gray-300 text-lg hover:bg-[rgba(256,256,256,0.05)] px-2 py-1 w-full rounded-md'>
             {menu.name}
@@ -33,6 +38,8 @@ const UserProfileDetails = () => {
          Sign Out
         </motion.p>
       </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }
