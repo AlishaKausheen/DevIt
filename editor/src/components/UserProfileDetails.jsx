@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { FaChevronDown } from 'react-icons/fa6';
 import { Menus, signOutAction } from '../utils/helpers';
 import { Link } from 'react-router-dom';
-import { slideUpOutOut } from "../animations"
+import { slideUpOut } from "../animations"
 
 
 const UserProfileDetails = () => {
@@ -28,7 +28,7 @@ const UserProfileDetails = () => {
       <AnimatePresence>
         {isMenu && (
           
-      <motion.div {...slideUpOutOut} className='bg-zinc-800 absolute top-16 right-0 px-4 py-3 rounded-xl shadow-md z-10 flex flex-col items-start justify-start gap-4 min-w-[225px]'>
+      <motion.div {...slideUpOut} className='bg-zinc-800 absolute top-16 right-0 px-4 py-3 rounded-xl shadow-md z-10 flex flex-col items-start justify-start gap-4 min-w-[225px]'>
         {Menus && Menus.map(menu => (
           <Link to={menu.uri} key={menu.id} className='text-gray-300 text-lg hover:bg-[rgba(256,256,256,0.05)] px-2 py-1 w-full rounded-md'>
             {menu.name}
