@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom"
-import { Home } from './container';
+import { Home, NewProject } from './container';
 import { auth, db } from './config/firebase.config';
 import { doc, setDoc } from 'firebase/firestore';
 import { Spinner } from './components';
@@ -46,7 +46,9 @@ const App = () => {
         :
         (<div className="h-screen w-screen flex items-start justify-start overflow-hidden">
       <Routes>
-        <Route path='/home/*' element={<Home />} />
+            <Route path='/home/*' element={<Home />} />
+            <Route path='/newProject' element={<NewProject/>}/>
+            {/*if route not matching */}
         <Route path='*' element={<Navigate to={'/home'}/>}/>
       </Routes>
     </div>)}
