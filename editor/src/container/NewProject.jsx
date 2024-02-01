@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react';
 import SplitPane from "react-split-pane";
 import { FaChevronDown, FaCss3Alt, FaHtml5, FaJs } from "react-icons/fa6";
 import { FcSettings } from 'react-icons/fc';
+import { Logo } from "../assets";
 
 import CodeMirror from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
+import { Link } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 
 
 const NewProject = () => {
@@ -12,6 +15,8 @@ const NewProject = () => {
     const [css, setCss] = useState("");
     const [js, setJs] = useState("");
     const [output, setOutput] = useState("");
+    const [isTitle, setIsTitle] = useState("");
+    const [title, setTitle] = useState("Untitled");
 
     useEffect(() => {
         updateOutput()
@@ -35,6 +40,31 @@ const NewProject = () => {
         <div className='w-screen h-screen flex flex-col items-start justify-start overflow-hidden'>
             {/*alert section */}
             {/*header section */}
+            <header className='w-full flex items-center justify-between px-12 py-4'>
+                <div className='flex items-center justify-center gap-6 '>
+                    <Link to={"/home/projects"}>
+                        <img className='w-32 h-auto object-contain' src={Logo} />
+                    </Link>
+                    <div className='flex flex-col items-start justify-start'>
+                        {/* title */}
+                        <div className='flex items-center justify-center gap-3'>
+                            <AnimatePresence>
+                                {isTitle ? <>
+                                <motion.input key={"TitleInput"} type='text' placeholder='Your Title' value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
+                                </> : <>
+                                        <motion.p key={"titleLabel"} className='px-3 py-2 text-white text-lg'>
+                                            {title}
+
+                                        </motion.p>
+                                </>}
+                            </AnimatePresence>
+
+                        </div>
+                        {/*follow section */}
+                    </div>
+                </div>
+                {/*user section */}
+            </header>
             {/*coding section */}
             <div>
                 {/*horizontal */}
