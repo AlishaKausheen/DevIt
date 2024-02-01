@@ -12,6 +12,21 @@ const NewProject = () => {
     const [css, setCss] = useState("");
     const [js, setJs] = useState("");
     const [output, setOutput] = useState("");
+
+    const updateOutput = () => {
+        const combinedOutput = `
+        <html>
+        <head>
+        <style>${css}</style>
+        </head>
+        <body>
+        ${html}
+        <script>${js}</script>
+        </body>
+        </html>
+        `;
+        setOutput(combinedOutput);
+    }
     return <>
         <div className='w-screen h-screen flex flex-col items-start justify-start overflow-hidden'>
             {/*alert section */}
@@ -112,8 +127,8 @@ const NewProject = () => {
                     </SplitPane>
                     
                     {/*bottom result section */}
-                    <div>
-
+                    <div className='bg-white' style={{overflow:"hidden", height:"100%"}}>
+                     
                     </div>
                     </SplitPane>
             </div>
