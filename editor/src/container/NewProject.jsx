@@ -8,6 +8,7 @@ import CodeMirror from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
 import { Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
+import { MdCheck, MdEdit } from 'react-icons/md';
 
 
 const NewProject = () => {
@@ -57,6 +58,19 @@ const NewProject = () => {
 
                                         </motion.p>
                                 </>}
+                            </AnimatePresence>
+                            <AnimatePresence>
+                                {isTitle ? (<>
+                                    <motion.div key={"MdCheck"} whileTap={{ scale: 0.9 }} className='cursor-pointer' onClick={() => setTitle(false)}>
+                                        <MdCheck className='text-2xl text-emerald-500'/>
+
+                                    </motion.div>
+                                </>) : (<>
+                                        <motion.div key={"MdEdit"} whileTap={{ scale: 0.9 }} className='cursor-pointer'
+                                        onClick={()=>setTitle(true)}>
+                                            <MdEdit className='text-2xl text-emerald-500'/>
+                                </motion.div>
+                                </>)}
                             </AnimatePresence>
 
                         </div>
