@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SplitPane from "react-split-pane";
 import { FaChevronDown, FaCss3Alt, FaHtml5, FaJs } from "react-icons/fa6";
 import { FcSettings } from 'react-icons/fc';
 
+import CodeMirror from '@uiw/react-codemirror';
+import { javascript } from '@codemirror/lang-javascript';
+
+
 const NewProject = () => {
+    const [html, setHtml] = useState("");
+    const [css, setCss] = useState("");
+    const [js, setJs] = useState("");
+    const [output, setOutput] = useState("");
     return <>
         <div className='w-screen h-screen flex flex-col items-start justify-start overflow-hidden'>
             {/*alert section */}
@@ -29,7 +37,15 @@ const NewProject = () => {
                                     <FaChevronDown className='text-xl text-gray-300'/>
                                 </div>
                             </div>
-                            <div>Code Mirror</div>
+                            <div className='w-full px-2 '>
+                                <CodeMirror
+                                    value="console.log('hello world');"
+                                    height='600px'
+                                    extensions={[javascript({ jsx: true })]}
+                                    theme={"dark"}
+                                    onChange={()=>{}}/>
+}
+                            </div>
 
                         </div>
 
