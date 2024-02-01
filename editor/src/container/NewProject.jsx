@@ -39,12 +39,14 @@ const NewProject = () => {
                             </div>
                             <div className='w-full px-2 '>
                                 <CodeMirror
-                                    value="console.log('hello world');"
+                                    value={html}
                                     height='600px'
                                     extensions={[javascript({ jsx: true })]}
                                     theme={"dark"}
-                                    onChange={()=>{}}/>
-}
+                                    onChange={(value, viewUpdate) => {
+                                        setHtml(value);
+                                    }}/>
+
                             </div>
 
                         </div>
@@ -63,7 +65,18 @@ const NewProject = () => {
                                     <FaChevronDown className='text-xl text-gray-300'/>
                                 </div>
                             </div>
-                            <div>Code Mirror</div>
+                              <div className='w-full px-2 '>
+                                <CodeMirror
+                                    value={css}
+                                    height='600px'
+                                    extensions={[javascript({ jsx: true })]}
+                                    theme={"dark"}
+                                    onChange={(value, viewUpdate) => {
+                                        setCss(value);
+                                    }}/>
+
+                            </div>
+
 
                         </div>
                             
@@ -80,7 +93,18 @@ const NewProject = () => {
                                     <FaChevronDown className='text-xl text-gray-300'/>
                                 </div>
                             </div>
-                            <div>Code Mirror</div>
+                              <div className='w-full px-2 '>
+                                <CodeMirror
+                                    value={js}
+                                    height='600px'
+                                    extensions={[javascript({ jsx: true })]}
+                                    theme={"dark"}
+                                    onChange={(value, viewUpdate) => {
+                                        setJs(value);
+                                    }}/>
+
+                            </div>
+
 
                         </div>
                         </SplitPane>
