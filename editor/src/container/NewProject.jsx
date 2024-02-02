@@ -10,6 +10,8 @@ import { javascript } from '@codemirror/lang-javascript';
 import { Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { MdCheck, MdEdit } from 'react-icons/md';
+import { UserProfileDetails } from '../components';
+import { doc, setDoc } from 'firebase/firestore';
 
 
 const NewProject = () => {
@@ -19,6 +21,7 @@ const NewProject = () => {
     const [output, setOutput] = useState("");
     const [isTitle, setIsTitle] = useState("");
     const [title, setTitle] = useState("Untitled");
+    const [alert, setAlert] = useState(false);
 
     const user = useSelector((state) => state.user.user);
 
@@ -40,9 +43,28 @@ const NewProject = () => {
         `;
         setOutput(combinedOutput);
     }
+
+    const saveProgram = async () => {
+        const id = `${Date.now()}`;
+        const _doc = {
+            id: id,
+            title: title,
+            html: html,
+            css: css,
+            js: js,
+            output: output,
+            user: user
+        }
+        await setDoc(doc(db, "Projects", id), _doc).then((res) => {
+            
+        }).catch((err)=> console.log(err))
+    }
     return <>
         <div className='w-screen h-screen flex flex-col items-start justify-start overflow-hidden'>
             {/*alert section */}
+            <AnimatePresence>
+                {alert && <Alert status={"Success"} alertMsg={"Project Saved..."}/>}
+            </AnimatePresence>
             {/*header section */}
             <header className='w-full flex items-center justify-between px-12 py-4'>
                 <div className='flex items-center justify-center gap-6 '>
@@ -88,10 +110,15 @@ const NewProject = () => {
                     </div>
                 </div>
                 {/*user section */}
-                <motion.button className='px-6 py-4 bg-gray-300 cursor-pointer text-base text-zinc-700 rounded-md'>
+                {user && (
+                    <div className='flex items-center justify-center gap-4'>
+                        <motion.button whileTap={{scale:0.9}} onClick={saveProgram} className='px-4 py-2 bg-gray-300 cursor-pointer text-base text-zinc-700 rounded-md'>
                     Save
-                </motion.button>
-                
+                        </motion.button>
+                        <UserProfileDetails/>
+                    </div>
+                )}
+
             </header>
             {/*coding section */}
             <div>
