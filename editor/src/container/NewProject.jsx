@@ -51,7 +51,8 @@ const NewProject = () => {
                         <div className='flex items-center justify-center gap-3'>
                             <AnimatePresence>
                                 {isTitle ? <>
-                                <motion.input key={"TitleInput"} type='text' placeholder='Your Title' value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
+                                    <motion.input key={"TitleInput"} type='text' placeholder='Your Title' value={title} onChange={(e) => { setTitle(e.target.value) }}
+                                    className='px-3 py-2 rounded-md bg-transparent text-gray-300 text-base outline-none border-none'/>
                                 </> : <>
                                         <motion.p key={"titleLabel"} className='px-3 py-2 text-white text-lg'>
                                             {title}
@@ -61,14 +62,14 @@ const NewProject = () => {
                             </AnimatePresence>
                             <AnimatePresence>
                                 {isTitle ? (<>
-                                    <motion.div key={"MdCheck"} whileTap={{ scale: 0.9 }} className='cursor-pointer' onClick={() => setTitle(false)}>
+                                    <motion.div key={"MdCheck"} whileTap={{ scale: 0.9 }} className='cursor-pointer' onClick={() => setIsTitle(false)}>
                                         <MdCheck className='text-2xl text-emerald-500'/>
 
                                     </motion.div>
                                 </>) : (<>
                                         <motion.div key={"MdEdit"} whileTap={{ scale: 0.9 }} className='cursor-pointer'
-                                        onClick={()=>setTitle(true)}>
-                                            <MdEdit className='text-2xl text-emerald-500'/>
+                                        onClick={()=>setIsTitle(true)}>
+                                            <MdEdit className='text-2xl text-gray-300'/>
                                 </motion.div>
                                 </>)}
                             </AnimatePresence>
