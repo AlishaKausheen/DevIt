@@ -3,6 +3,7 @@ import SplitPane from "react-split-pane";
 import { FaChevronDown, FaCss3Alt, FaHtml5, FaJs } from "react-icons/fa6";
 import { FcSettings } from 'react-icons/fc';
 import { Logo } from "../assets";
+import { useSelector } from 'react-redux';
 
 import CodeMirror from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
@@ -18,6 +19,8 @@ const NewProject = () => {
     const [output, setOutput] = useState("");
     const [isTitle, setIsTitle] = useState("");
     const [title, setTitle] = useState("Untitled");
+
+    const user = useSelector((state) => state.user.user);
 
     useEffect(() => {
         updateOutput()
@@ -76,6 +79,11 @@ const NewProject = () => {
 
                         </div>
                         {/*follow section */}
+                        <div className='flex items-center justify-center px-3 -mt-2 gap-2'>
+                            <p className='text-gray-300 text-sm '>
+                               {user?.displayName ? user?.displayName : `${user?.email.split("@")[0]}`}
+                            </p>
+                        </div>
                     </div>
                 </div>
                 {/*user section */}
