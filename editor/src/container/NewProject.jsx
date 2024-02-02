@@ -83,10 +83,15 @@ const NewProject = () => {
                             <p className='text-gray-300 text-sm '>
                                {user?.displayName ? user?.displayName : `${user?.email.split("@")[0]}`}
                             </p>
+                            <motion.p whileTap={{scale: 0.9}} className='text-[10px] bg-emerald-500 rounded-sm px-2py-[1px] text-zinc-700 font-semibold cursor-pointer'>+ Follow</motion.p>
                         </div>
                     </div>
                 </div>
                 {/*user section */}
+                <motion.button className='px-6 py-4 bg-gray-300 cursor-pointer text-base text-zinc-700 rounded-md'>
+                    Save
+                </motion.button>
+                
             </header>
             {/*coding section */}
             <div>
