@@ -10,8 +10,9 @@ import { javascript } from '@codemirror/lang-javascript';
 import { Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { MdCheck, MdEdit } from 'react-icons/md';
-import { UserProfileDetails } from '../components';
+import { Alert, UserProfileDetails } from '../components';
 import { doc, setDoc } from 'firebase/firestore';
+import { db } from '../config/firebase.config';
 
 
 const NewProject = () => {
@@ -56,8 +57,12 @@ const NewProject = () => {
             user: user
         }
         await setDoc(doc(db, "Projects", id), _doc).then((res) => {
-            
-        }).catch((err)=> console.log(err))
+            setAlert(true);
+        }).catch((err) => console.log(err))
+        
+        setInterval(() => {
+            setAlert(false);
+        },2000)
     }
     return <>
         <div className='w-screen h-screen flex flex-col items-start justify-start overflow-hidden'>
