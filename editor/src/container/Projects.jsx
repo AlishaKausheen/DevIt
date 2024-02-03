@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { motion } from "framer-motion";
+import { MdBookmark } from 'react-icons/md';
 
 const Projects = () => {
   const projects = useSelector((state) => state.projects?.projects);
@@ -46,7 +47,21 @@ rounded-xl overflow-hidden cursor-pointer bg-emerald-500'>
 
 </div>
 
-                {/*name */}
+        {/*name */}
+        <div>
+          <p className='text-white text-lg capitalize'>{project?.title}</p>
+          <p className='text-gray-300 text-sm capitalize'>
+            {project?.user?.displayName
+              ? project?.user?.displayName
+          : `${project?.user.email.split("@")[0]}`}
+          </p>
+        </div>
+        <motion.div
+          className='cursor-pointer ml-auto'
+          whileTap={{ scale: 0.9 }}>
+          <MdBookmark className='text-gray-300 text-3xl'/>
+
+        </motion.div>
       </div>
     </motion.div>
   )
