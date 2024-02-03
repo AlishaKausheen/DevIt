@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { motion } from "framer-motion";
 
 const Projects = () => {
   const projects = useSelector((state) => state.projects?.projects);
@@ -13,11 +14,20 @@ const Projects = () => {
   )
 }
 
-const ProjectCard = () => {
+const ProjectCard = ({project, index}) => {
   return (
-    <div>
-      Project
-    </div>
+    <motion.div key={index} className='w-full cursor-pointer md:w[450px]
+    h-[375px] bg-zinc-700 rounded-md p-4 flex flex-col items-center justify-center
+    gap-4'>
+      <div className='bg-zinc-700 w-full h-full rounded-md overflow-hidden'
+        style={{ overflow: "hidden", height: "100%" }}>
+                        <iframe
+                            title='result'
+                            srcDoc={project.output}
+                            style={{border: 'none', width:'100%', height:'100%'}}
+                        />
+                    </div>
+    </motion.div>
   )
 }
 export default Projects;
