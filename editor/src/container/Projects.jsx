@@ -39,7 +39,12 @@ const Projects = () => {
 
 const ProjectCard = ({project, index}) => {
   return (
-    <motion.div key={index} className='w-full cursor-pointer md:w[450px]
+    <motion.div key={index}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{duration: 0.5, delay: index*0.1}}
+      className='w-full cursor-pointer md:w[450px]
     h-[375px] bg-zinc-700 rounded-md p-3 flex flex-col items-center justify-center
     gap-2'>
       <div className='bg-zinc-700 w-full h-full rounded-md overflow-hidden'
