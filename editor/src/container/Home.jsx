@@ -7,12 +7,16 @@ import { Link, Route, Routes } from 'react-router-dom'
 import {Logo} from "../assets"
 import {Projects} from '../container'
 import { SignUp } from '../container'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { UserProfileDetails } from '../components'
+import { SET_SEARCH_TERM } from '../context/actions/searchActions'
 
 const Home = ()=> {
   const [isSideMenu, setIsSideMenu] = useState(false);
-  const user = useSelector(state => state.user?.user)
+  const user = useSelector(state => state.user?.user);
+  const searchTerm = useSelector(state => state.searchTerm?.searchTerm ?
+    state.searchTerm?.searchTerm : "");
+  const dispatch = useDispatch();
     return(
     <>
             <div className={`w-16 ${isSideMenu ? "w-1" : "flex-[.1] xl:flex-[.2]"} 
@@ -55,8 +59,12 @@ const Home = ()=> {
             <div className='bg-zinc-800 h-10 w-full px-4 py-3 rounded-md
             flex items-center justify-center gap-3'>
               <FaSearchengin className='text-2xl text-gray-300' />
-              <input type='text' className='flex-1 px-4 py-1 text-xl bg-transparent
-              outline-none border-none text-gray-300 placeholder:text-gray-600' placeholder="Search here..." />
+              <input type='text'
+                value={searchTerm}
+                className='flex-1 px-4 py-1 text-xl bg-transparent
+              outline-none border-none text-gray-300 placeholder:text-gray-600'
+                placeholder="Search here..."
+              onClick={(e)=> dispatch(SET_SEARCH_TERM(e.target.value))}/>
             </div>
             {/*profile section */}
             {!user && (
