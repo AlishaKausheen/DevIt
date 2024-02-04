@@ -19,9 +19,9 @@ const Home = ()=> {
   const dispatch = useDispatch();
     return(
     <>
-            <div className={`w-16 ${isSideMenu ? "w-1" : "flex-[.1] xl:flex-[.2]"} 
+            <div className={`w-6 ${isSideMenu ? "w-1" : "flex-[.1] xl:flex-[.2]"} 
             min-h-screen max-h-screen relative bg-zinc-800
-            px-3 py-6 flex flex-col items-center justify-start gap-4 transition-all
+            px-3 py-3 flex flex-col items-center justify-start gap-4 transition-all
             duration-200 ease-in-out`}>
                 {/* anchor*/}
                 <motion.div whileTap={{scale:0.9}} onClick={() => setIsSideMenu(!isSideMenu)} className='w-8 h-8 bg-zinc-800 rounded-tr-lg 

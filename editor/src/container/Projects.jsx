@@ -23,7 +23,8 @@ const Projects = () => {
     }
   },[searchTerm])
   return (
-    <div className='w-full py-6 flex items-center justify-center gap-6 flex-wrap'>
+    <div className='flex flex-col items-center justify-center'>
+    <div className='w-full py-6 flex items-center justify-center gap-2 flex-wrap'>
       {filtered ? <>{filtered &&
         filtered.map((project, index) => (
         <ProjectCard key={project.id} project={project} index={index} />
@@ -33,6 +34,7 @@ const Projects = () => {
         <ProjectCard key={project.id} project={project} index={index} />
       ))}</>}
       
+    </div>
     </div>
   )
 }
@@ -44,7 +46,7 @@ const ProjectCard = ({project, index}) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{duration: 0.5, delay: index*0.1}}
-      className='w-full cursor-pointer md:w[450px]
+      className='w-full cursor-pointer md:w[350px]
     h-[375px] bg-zinc-700 rounded-md p-3 flex flex-col items-center justify-center
     gap-2'>
       <div className='bg-zinc-700 w-full h-full rounded-md overflow-hidden'
